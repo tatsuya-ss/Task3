@@ -27,31 +27,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resultAction(_ sender: Any) {
-        
-        var num1:Double = Double(textField1.text!) ?? 0
-        var num2:Double = Double(textField2.text!) ?? 0
-        
+        //varからletに変更。
+        let num1:Double = Double(textField1.text!) ?? 0
+        let num2:Double = Double(textField2.text!) ?? 0
+        //定数の追加
+        let signedNum1: Double
         if switch1.isOn {
-            num1 = num1 * -1
-            label1.text = "-\(String(textField1.text!))"
+            //マイナスをつけるだけで良い
+            signedNum1 = -num1
         }else{
-            num1 += 0
-            label1.text = "\(String(textField1.text!))"
+             signedNum1 = num1
         }
-        
+        label1.text = String(signedNum1)
+        //定数の追加
+        let signedNum2: Double
         if switch2.isOn {
-            num2 = num2 * -1
-            label2.text = "-\(String(textField2.text!))"
-            
+            signedNum2 = -num2
         }else{
-            num2 += 0
-            label2.text = "\(String(textField2.text!))"
-            
+            signedNum2 = num2
         }
-        
-        let kekka = num1 + num2
-        resultLabel.text = String(kekka)
-        
+        label2.text = String(signedNum2)
+        //数値の計算でも結果をStringで括って肩の変更ができる。
+        resultLabel.text = String(signedNum1 + signedNum2)
     }
     
 }
